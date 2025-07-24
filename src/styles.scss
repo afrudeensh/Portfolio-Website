@@ -6,19 +6,28 @@
 @tailwind utilities;
 
 /* Global styles for your Angular application */
-html,
-body {
-    height: 100%;
+html {
+  /* Enforce border-box model for all elements for consistent sizing */
+  box-sizing: border-box;
+  /* Smooth scroll behavior for anchor links */
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /* Inherit box-sizing from html */
 }
 
 body {
   margin: 0;
+  height: 100%; /* Ensures body takes full html height */
+  min-height: 100vh; /* Ensures body is at least full viewport height */
   font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
   background: linear-gradient(145deg, #f9fbfd, #e9f0f6); /* subtle glassy gradient */
   color: #1e1e2f;
   position: relative;
-  overflow-x: hidden;
-  min-height: 100vh;
+  overflow-x: hidden; /* Prevents horizontal scrollbar due to effects */
 }
 
 /* Glowing radial backdrop (Top Left) */
@@ -34,6 +43,8 @@ body::before {
   filter: blur(100px);
   opacity: 0.6;
   transform: rotate(15deg);
+  /* Added for smooth animation if properties change */
+  transition: all 0.3s ease-in-out; 
 }
 
 /* Glowing radial backdrop (Bottom Right) */
@@ -49,51 +60,55 @@ body::after {
   filter: blur(120px);
   opacity: 0.5;
   transform: rotate(-20deg);
+  /* Added for smooth animation if properties change */
+  transition: all 0.3s ease-in-out;
 }
 
-/* Optional: Subtle noise texture for depth */
-body::after,
+/* Optional: Subtle noise texture for depth (if you decide to add it via a background image) */
+/* body::after,
 body::before {
   background-blend-mode: overlay;
-}
+} */
 
 
-
-
-/* Potentially useful for full-height layouts */
+/* Potentially useful for full-height layouts in Angular apps */
 #root,
 #app {
-    height: 100%;
+  height: 100%;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+/* Sections for anchor scrolling and spacing */
 section {
-    padding-top: 60px;
-    /* Adjust based on navbar height */
-    scroll-margin-top: 120px;
-    /* Important for anchor scrolling */
+  padding-top: 60px; /* Default desktop padding */
+  /* Adjusted scroll-margin-top based on an assumed 60px navbar + 20px buffer */
+  scroll-margin-top: 80px; 
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
-    section {
-        padding-top: 80px;
-        scroll-margin-top: 80px;
-    }
+  section {
+    padding-top: 80px; /* More padding on mobile if content might touch navbar */
+    /* Adjusted scroll-margin-top based on an assumed 70px mobile navbar + 10px buffer */
+    scroll-margin-top: 80px; 
+  }
 }
 
+/* Keyframes for fadeInDown animation */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
+/* Optional: Focus-visible for better accessibility */
+/* This ensures outlines appear only when navigating with keyboard */
+:focus-visible {
+  outline: 2px solid #3b82f6; /* Example blue outline */
+  outline-offset: 2px;
+}
