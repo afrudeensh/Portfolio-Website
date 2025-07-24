@@ -1,0 +1,21 @@
+<nav class="custom-navbar">
+  <div class="nav-container">
+    <a routerLink="/home" class="brand">AFRUDEEN S H</a>
+
+    <!-- Hamburger Icon -->
+    <button class="hamburger" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Responsive Nav Links -->
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a href="#home" (click)="closeMenu()">Home</a></li>
+      <li><a href="#about" (click)="closeMenu()">About</a></li>
+      <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+      <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for your Angular application */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* Adjust font as needed */
+    /* If you want the background of the entire body to be light-grey by default */
+    background-color: var(--color-light-grey, #f0f2f5);
+    /* Fallback if var not defined or for wider browser compatibility */
+}
+
+/* Potentially useful for full-height layouts */
+#root,
+#app {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    padding-top: 60px;
+    /* Adjust based on navbar height */
+    scroll-margin-top: 120px;
+    /* Important for anchor scrolling */
+}
+
+@media (max-width: 768px) {
+    section {
+        padding-top: 80px;
+        scroll-margin-top: 80px;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
