@@ -12,13 +12,53 @@ body {
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    /* Adjust font as needed */
-    /* If you want the background of the entire body to be light-grey by default */
-    background-color: var(--color-light-grey, #f0f2f5);
-    /* Fallback if var not defined or for wider browser compatibility */
+  margin: 0;
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+  background: linear-gradient(145deg, #f9fbfd, #e9f0f6); /* subtle glassy gradient */
+  color: #1e1e2f;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
+
+/* Glowing radial backdrop (Top Left) */
+body::before {
+  content: '';
+  position: fixed;
+  top: -120px;
+  left: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(173, 216, 230, 0.15), transparent 70%);
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.6;
+  transform: rotate(15deg);
+}
+
+/* Glowing radial backdrop (Bottom Right) */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -150px;
+  right: -100px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.12), transparent 70%);
+  z-index: -1;
+  filter: blur(120px);
+  opacity: 0.5;
+  transform: rotate(-20deg);
+}
+
+/* Optional: Subtle noise texture for depth */
+body::after,
+body::before {
+  background-blend-mode: overlay;
+}
+
+
+
 
 /* Potentially useful for full-height layouts */
 #root,
